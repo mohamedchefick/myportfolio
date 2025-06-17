@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-4 sm:py-6 md:py- lg:py- xl:py- 2xl:py- lg:mt-2 xl:">
+  <div class="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 2xl:py-16 mt-4 lg:mt-2">
     <h1 class="text-3xl text-center mb-8">
       My <span class="font-extrabold text-[#0AFFEC] bg-black px-3 py-2 rounded-2xl">Skills</span>
     </h1>
@@ -7,40 +7,14 @@
       class="flex flex-wrap justify-center gap-6 md:gap-10 lg:grid lg:grid-cols-4 lg:gap-10 lg:py-10"
       ref="skillsContainer"
     >
-      <!-- Skill Buttons Row 1 -->
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="HTML5">
-        <box-icon type='logo' name='html5' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">HTML5<br>Markup Language</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="CSS3">
-        <box-icon name='css3' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">CSS3<br>Styling Language</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="JavaScript">
-        <box-icon name='javascript' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">JavaScript<br>Programming Language</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-200 flex items-center justify-center transition-colors duration-300" aria-label="Sass">
-        <box-icon name='sass' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">Sass<br>CSS Preprocessor</span>
-      </button>
-
-      <!-- Skill Buttons Row 2 -->
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="React">
-        <box-icon type='logo' name='react' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">React<br>JavaScript Library</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="Vue.js">
-        <box-icon name='vuejs' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">Vue.js<br>JavaScript Framework</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300" aria-label="Tailwind CSS">
-        <box-icon name='tailwind-css' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">Tailwind CSS<br>Utility-First CSS Framework</span>
-      </button>
-      <button class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-200 flex items-center justify-center transition-colors duration-300" aria-label="Firebase">
-        <box-icon name='firebase' type='logo' class="w-24 h-24 md:w-28 md:h-28"></box-icon>
-        <span class="mt-2 text-sm text-center">Firebase<br>Backend Service</span>
+      <button
+        v-for="(skill, index) in skills"
+        :key="index"
+        class="skill-button p-4 border-black border-2 rounded-lg hover:bg-gray-300 flex items-center justify-center transition-colors duration-300"
+        :aria-label="skill.label"
+      >
+        <box-icon :type="skill.type" :name="skill.name" class="w-24 h-24 md:w-28 md:h-28"></box-icon>
+        <span class="mt-2 text-sm text-center" v-html="skill.description"></span>
       </button>
     </div>
   </div>
@@ -48,7 +22,22 @@
 
 <script>
 export default {
-  name: "the-skills",
+  name: "TheSkills",
+  data() {
+    return {
+      skills: [
+        { name: 'html5', type: 'logo', label: 'HTML5', description: 'HTML5<br>Markup Language' },
+        { name: 'css3', type: 'logo', label: 'CSS3', description: 'CSS3<br>Styling Language' },
+        { name: 'javascript', type: 'logo', label: 'JavaScript', description: 'JavaScript<br>Programming Language' },
+        { name: 'sass', type: 'logo', label: 'Sass', description: 'Sass<br>CSS Preprocessor' },
+        { name: 'react', type: 'logo', label: 'React', description: 'React<br>JavaScript Library' },
+        { name: 'vuejs', type: 'logo', label: 'Vue.js', description: 'Vue.js<br>JavaScript Framework' },
+        { name: 'tailwind-css', type: 'logo', label: 'Tailwind CSS', description: 'Tailwind CSS<br>Utility-First CSS Framework' },
+        { name: 'firebase', type: 'logo', label: 'Firebase', description: 'Firebase<br>Backend Service' },
+        { name: 'typescript', type: 'logo', label: 'Typescript', description: 'Typescript<br>Improved Javascript.' },
+      ]
+    };
+  },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     this.handleScroll(); // Initial check
@@ -60,10 +49,10 @@ export default {
     handleScroll() {
       const elements = this.$refs.skillsContainer.querySelectorAll('.skill-button');
       const scrollPosition = window.innerHeight / 1.5;
-      
+
       elements.forEach(element => {
         const position = element.getBoundingClientRect().top;
-        
+
         if (position < scrollPosition) {
           element.classList.add('animate-fade-in-up');
         } else {
@@ -74,6 +63,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 /* Définir l'animation d'apparition */
@@ -97,3 +87,4 @@ export default {
   animation: fadeInUp 0.6s forwards;
 }
 </style>
+

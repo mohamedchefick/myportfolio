@@ -7,7 +7,7 @@
     <div class="text-center lg:text-left space-y-4 lg:pl-10 max-w-prose animate-fade-in-zoom">
       <h2 class="text-3xl md:text-4xl font-normal text-gray-800">About <span class="font-extrabold text-[#0AFFEC] bg-black px-3 py-2 rounded-2xl">Me</span></h2>
       <p class="text-gray-600 text-base md:text-lg italic">
-        As a passionate front-end developer with a Bac+2 degree,
+        As a passionate front-end developer with a Bac+3 degree,
         I have honed my skills in web development through academic
         and professional internships. My journey began with a
         three-month academic internship at HELIS, where I

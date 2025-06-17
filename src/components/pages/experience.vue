@@ -14,7 +14,7 @@
           <h2 class="text-xl md:text-2xl font-semibold mb-2">Front-End Developer (Academic Internship)</h2>
           <h3 class="text-lg md:text-xl font-medium mb-2">HELIS - Location</h3>
           <p class="text-gray-300 text-base md:text-lg">
-            Academic internship of 3 months as a Front-End Developer. Practical experience with modern web technologies, including HTML, CSS, and JavaScript. Participation in various projects, honing skills in responsive design and user interface development.
+            Academic internship of 4 months as a Front-End Developer. Practical experience with modern web technologies, including HTML, CSS, JavaScript, Vue.js, Tailwind CSS, Firebase, and more. Participation in various projects, honing my skills in responsive design and user interface development.
           </p>
         </div>
 
@@ -24,7 +24,7 @@
           <h2 class="text-xl md:text-2xl font-semibold mb-2">Front-End Developer (Professional Internship)</h2>
           <h3 class="text-lg md:text-xl font-medium mb-2">41devs - Location</h3>
           <p class="text-gray-300 text-base md:text-lg">
-            Professional internship of 1 month and 3 months Academic at 41devs. Contributed to the development of interactive web applications using frameworks such as Vue.js and libraries like Tailwind CSS. Assisted in debugging and optimizing code to improve performance and user experience.
+            4-month professional internship at 41devs. Contributed to the development of interactive web applications using frameworks such as Vue.js and libraries like Tailwind CSS. Assisted in debugging and optimizing code to improve performance and user experience.
           </p>
         </div>
 

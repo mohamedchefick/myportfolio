@@ -10,7 +10,7 @@
                 <box-icon type='logo' name='facebook' color="#1877F2" class="text-[#1877F2] hover:text-white"></box-icon>
             </button>
             </a>
-              <a href="https://www.instagram.com/koudenoukpomh?igsh=MWViNXJkcGszbHdybQ" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/mh_chefick?igsh=MWViNXJkcGszbHdybQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
                 <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-400">
                     <box-icon name='instagram-alt' type='logo' color="#E4405F" class="text-[#E4405F] hover:text-white"></box-icon>
                 </button>
