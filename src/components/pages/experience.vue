@@ -32,9 +32,9 @@
         <div class="experience-item bg-gray-800 p-4 md:p-6 lg:p-8 rounded-lg shadow-lg opacity-0">
           <box-icon name='briefcase' color='rgba(15,240,223,0.98)' class="w-20 h-10  custom-flash"></box-icon>
           <h2 class="text-xl md:text-2xl font-semibold mb-2">Academic Training</h2>
-          <h3 class="text-lg md:text-xl font-medium mb-2">Bac+2 - Field of Study</h3>
+          <h3 class="text-lg md:text-xl font-medium mb-2">Bac+3 - Field of Study</h3>
           <p class="text-gray-300 text-base md:text-lg">
-            Bac+2 degree in web development. Gained fundamental knowledge in programming, web development, and software engineering principles. Continuous improvement of skills through self-learning and professional development.
+            Bac+3 degree in web development. Gained fundamental knowledge in programming, web development, and software engineering principles. Continuous improvement of skills through self-learning and professional development.
           </p>
         </div>
       </div>

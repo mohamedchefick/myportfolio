@@ -6,22 +6,22 @@
           <br>
           <div class="gap-2 flex justify-center lg:justify-start">
             <a href="https://www.facebook.com/profile.php?id=100089825846100" target="_blank" rel="noopener noreferrer">
-                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-400">
+                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-200 flex">
                 <box-icon type='logo' name='facebook' color="#1877F2" class="text-[#1877F2] hover:text-white"></box-icon>
             </button>
             </a>
               <a href="https://www.instagram.com/mh_chefick?igsh=MWViNXJkcGszbHdybQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
-                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-400">
+                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-200 flex">
                     <box-icon name='instagram-alt' type='logo' color="#E4405F" class="text-[#E4405F] hover:text-white"></box-icon>
                 </button>
             </a>
             <a href="https://wa.me/+24102390936" target="_blank" rel="noopener noreferrer">
-                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-400">
+                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-200 flex">
                     <box-icon name='whatsapp' type='logo' color="#25D366" class="text-[#25D366] hover:text-white"></box-icon>
                 </button>
             </a>
             <a href="https://github.com/mohamedchefick" target="_blank" rel="noopener noreferrer">
-                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-400">
+                <button class="p-2 border-black border-2 rounded-lg hover:bg-gray-200 flex">
                 <box-icon name='github' type='logo' color="#181717" class="text-[#181717] hover:text-white"></box-icon>
             </button>
             </a>

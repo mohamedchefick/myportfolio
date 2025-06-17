@@ -17,17 +17,17 @@
             <h3 class="italic">
             <span class="text-2xl font-extrabold">"LaboutiqueChine"</span> is your go-to online destination for authentic products directly from China. We offer a wide range of items, from trendy clothing and tech gadgets to unique accessories and high-quality beauty products. Whether you’re looking for fashion items, home decor, or innovative products, our store provides a smooth, secure, and fast shopping experience. Explore our collections, take advantage of our exclusive offers, and let us bring a touch of Chinese exoticism with reliable and speedy service.
             </h3>
+            <a href="https://laboutiquechine.surge.sh/" class="text-[#0AFFEC] hover:text-black hover:bg-[#0AFFEC] text-lg md:text-xl font-semibold px-6 md:px-8 py-2 rounded-xl shadow-xl hover:scale-105 transition-transform duration-150 border-[#0AFFEC] border-2 mt-4 inline-block">
+                See the project
+            </a>
+            </div>
         </div>
-        </div>
-
-        
         <hr class="mx-5 md:mx-20">
-                
         <!-- Section 2 -->
         <div class="p-5 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-5 items-center project-item">
             <!-- Image -->
             <div class="w-full lg:w-1/2 lg:order-last">
-                <a href="https://fames-frontend.connect-me-app.com/" class="block w-full h-full">
+                <a href="https://www.famesbenin.org/" class="block w-full h-full">
                     <img :src="images.IMGBlog" alt="Blog" class="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-700 hover:scale-105 mb-5 lg:mb-0">
                 </a>
             </div>
@@ -38,9 +38,11 @@
                 <h3 class="italic">
                     <span class="text-2xl font-extrabold">"FAMES Bénin"</span> is the official site of the Beninese Students Association in China. Created to strengthen ties among Beninese students abroad, our blog is a platform dedicated to exchanges, information, and solidarity. Here, we share articles about student life in China, practical advice for newcomers, internship and job opportunities, as well as inspiring success stories. Whether you are a student, an alumnus, or simply interested in Sino-Beninese relations, FAMES Bénin invites you to join a dynamic and engaged community.
                 </h3>
-            </div>
+                    <a href="https://www.famesbenin.org/" class="text-[#0AFFEC] hover:text-black hover:bg-[#0AFFEC] text-lg md:text-xl font-semibold px-6 md:px-8 py-2 rounded-xl shadow-xl hover:scale-105 transition-transform duration-150 border-[#0AFFEC] border-2 mt-4 inline-block">
+                    See the project
+                    </a>
+                </div>
         </div>
-
     </div>
 </template>
 
