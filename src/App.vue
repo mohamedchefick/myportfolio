@@ -1,5 +1,5 @@
 <template>
-  <div class="italic">
+  <div>
     <headerVue/>
     <heroVue id="home"/>
     <skilles id="skills"/>
@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
 import headerVue from "./components/Helper/header.vue";
 import heroVue from "./components/pages/hero.vue";
 import skilles from "./components/pages/skilles.vue";

@@ -1,49 +1,84 @@
 <template>
-    <div class="bg-black text-white">
-        <h2 class="text-3xl md:text-4xl font-normal text-white text-center pt-5 animate-fade-in-up">My <span class="font-extrabold text-[#0AFFEC]">Projects</span></h2>
-        
-       <!-- Section 1 -->
-        <div class="p-5 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-5 items-center project-item">
-        <!-- Image -->
-        <div class="w-full lg:w-1/2">
-            <a href="https://laboutiquechine.surge.sh/" class="block w-full h-full">
-            <img :src="images.IMGecomerce" alt="E-commerce" class="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-700 hover:scale-105">
-            </a>
+  <section class="py-24 px-6 md:px-10 lg:px-16 bg-[#0A0A0A]">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Title -->
+      <div class="text-center mb-20">
+        <p class="inline-flex items-center gap-2 text-[#0AFFEC] font-mono text-xs tracking-widest uppercase mb-5">
+          <span class="w-6 h-px bg-[#0AFFEC]"></span>
+          My work
+          <span class="w-6 h-px bg-[#0AFFEC]"></span>
+        </p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+          Featured <span class="text-[#0AFFEC]">Projects</span>
+        </h2>
+      </div>
+
+      <!-- Projects -->
+      <div class="space-y-28">
+
+        <!-- Project 1 -->
+        <div class="project-item opacity-0 flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+          <!-- Image -->
+          <div class="w-full lg:w-1/2 relative">
+            <div class="project-img-wrapper overflow-hidden rounded-2xl border border-gray-800">
+              <img :src="images.IMGecomerce" alt="LaboutiqueChine"
+                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+          </div>
+          <!-- Text -->
+          <div class="w-full lg:w-1/2 space-y-5">
+            <div class="flex items-center gap-3">
+              <span class="text-[7rem] font-black text-gray-800/30 leading-none select-none">01</span>
+            </div>
+            <h3 class="text-white text-2xl md:text-3xl font-extrabold -mt-8">LaboutiqueChine</h3>
+            <div class="w-10 h-0.5 bg-[#0AFFEC] rounded-full"></div>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              An online destination for authentic Chinese products — clothing, tech gadgets, accessories, and beauty items — with a smooth, secure, and fast shopping experience.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span v-for="tech in project1Tech" :key="tech"
+                class="text-xs font-medium bg-gray-800/80 text-gray-300 px-3 py-1.5 rounded-lg border border-gray-700">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <!-- Text Content -->
-        <div class="w-full lg:w-1/2 flex flex-col items-center justify-center text-xl text-center lg:text-left">
-            <h1 class="text-4xl font-extrabold flex items-start justify-start">01.</h1>
-            <h3 class="italic">
-            <span class="text-2xl font-extrabold">"LaboutiqueChine"</span> is your go-to online destination for authentic products directly from China. We offer a wide range of items, from trendy clothing and tech gadgets to unique accessories and high-quality beauty products. Whether you’re looking for fashion items, home decor, or innovative products, our store provides a smooth, secure, and fast shopping experience. Explore our collections, take advantage of our exclusive offers, and let us bring a touch of Chinese exoticism with reliable and speedy service.
-            </h3>
-            <a href="https://laboutiquechine.surge.sh/" class="text-[#0AFFEC] hover:text-black hover:bg-[#0AFFEC] text-lg md:text-xl font-semibold px-6 md:px-8 py-2 rounded-xl shadow-xl hover:scale-105 transition-transform duration-150 border-[#0AFFEC] border-2 mt-4 inline-block">
-                See the project
-            </a>
-            </div>
-        </div>
-        <hr class="mx-5 md:mx-20">
-        <!-- Section 2 -->
-        <div class="p-5 md:p-10 lg:p-20 flex flex-col lg:flex-row gap-5 items-center project-item">
-            <!-- Image -->
-            <div class="w-full lg:w-1/2 lg:order-last">
-                <a href="https://www.famesbenin.org/" class="block w-full h-full">
-                    <img :src="images.IMGBlog" alt="Blog" class="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-700 hover:scale-105 mb-5 lg:mb-0">
-                </a>
-            </div>
+        <!-- Separator -->
+        <div class="border-t border-gray-800/60"></div>
 
-            <!-- Text Content -->
-            <div class="w-full lg:w-1/2 flex flex-col items-center justify-center text-xl text-center lg:text-left">
-                <h1 class="text-4xl font-extrabold flex items-start justify-start">02.</h1>
-                <h3 class="italic">
-                    <span class="text-2xl font-extrabold">"FAMES Bénin"</span> is the official site of the Beninese Students Association in China. Created to strengthen ties among Beninese students abroad, our blog is a platform dedicated to exchanges, information, and solidarity. Here, we share articles about student life in China, practical advice for newcomers, internship and job opportunities, as well as inspiring success stories. Whether you are a student, an alumnus, or simply interested in Sino-Beninese relations, FAMES Bénin invites you to join a dynamic and engaged community.
-                </h3>
-                    <a href="https://www.famesbenin.org/" class="text-[#0AFFEC] hover:text-black hover:bg-[#0AFFEC] text-lg md:text-xl font-semibold px-6 md:px-8 py-2 rounded-xl shadow-xl hover:scale-105 transition-transform duration-150 border-[#0AFFEC] border-2 mt-4 inline-block">
-                    See the project
-                    </a>
-                </div>
+        <!-- Project 2 -->
+        <div class="project-item opacity-0 flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-center">
+          <!-- Image -->
+          <div class="w-full lg:w-1/2">
+            <div class="project-img-wrapper overflow-hidden rounded-2xl border border-gray-800">
+              <img :src="images.IMGBlog" alt="FAMES Bénin"
+                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+          </div>
+          <!-- Text -->
+          <div class="w-full lg:w-1/2 space-y-5">
+            <div class="flex items-center gap-3">
+              <span class="text-[7rem] font-black text-gray-800/30 leading-none select-none">02</span>
+            </div>
+            <h3 class="text-white text-2xl md:text-3xl font-extrabold -mt-8">FAMES Bénin</h3>
+            <div class="w-10 h-0.5 bg-[#0AFFEC] rounded-full"></div>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Official site of the Beninese Students Association in China — a platform for exchanges, solidarity, articles, practical advice, and career opportunities.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span v-for="tech in project2Tech" :key="tech"
+                class="text-xs font-medium bg-gray-800/80 text-gray-300 px-3 py-1.5 rounded-lg border border-gray-700">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
         </div>
+
+      </div>
     </div>
+  </section>
 </template>
 
 <script>
@@ -51,64 +86,54 @@ import IMGecomerce from "../../assets/IMGE_COMERCE.png";
 import IMGBlog from "../../assets/IMGBlog.png";
 
 export default {
-    name: 'the-projects',
-    data() {
-        return {
-            images: { IMGecomerce, IMGBlog }
-        };
-    },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-        this.handleScroll(); // Initial check
-    },
-    beforeUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-        handleScroll() {
-            const elements = document.querySelectorAll('.project-item');
-            const scrollPosition = window.innerHeight / 1.5;
-            elements.forEach(element => {
-                const position = element.getBoundingClientRect().top;
-                if (position < scrollPosition) {
-                    element.classList.add('animate-fade-in-up');
-                } else {
-                    element.classList.remove('animate-fade-in-up');
-                }
-            });
+  name: 'the-projects',
+  data() {
+    return {
+      images: { IMGecomerce, IMGBlog },
+      project1Tech: ['Vue.js', 'Tailwind CSS', 'Firebase', 'JavaScript'],
+      project2Tech: ['Vue.js', 'Tailwind CSS', 'JavaScript']
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const elements = document.querySelectorAll('.project-item');
+      const scrollPosition = window.innerHeight / 1.3;
+      elements.forEach((el, i) => {
+        const position = el.getBoundingClientRect().top;
+        if (position < scrollPosition && !el.classList.contains('animate-in')) {
+          setTimeout(() => el.classList.add('animate-in'), i * 200);
         }
+      });
     }
-}
+  }
+};
 </script>
 
 <style scoped>
-/* Animation for fading in and sliding up */
+.project-img-wrapper {
+  position: relative;
+}
+.project-img-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(10, 255, 236, 0.04));
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.animate-in {
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.project-item {
-  opacity: 0; /* Start with hidden state */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-/* Optional: Animation for hover scale effect on images */
-img {
-  transition: transform 0.3s ease-in-out;
-}
-
-img:hover {
-  transform: scale(1.05);
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>

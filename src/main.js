@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
-import 'vue-toastification/dist/index.css';
 import './assets/main.css';
 
 // Enregistrement du service worker pour PWA
