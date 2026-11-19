@@ -32,8 +32,27 @@
                 <img :src="p.image" :alt="`${p.title} — screenshot`" loading="lazy" />
               </div>
             </div>
+            <!-- iPhone 15 mock-up (CSS only) -->
             <div v-if="p.mobile" class="phone">
-              <div class="phone__screen"><img :src="p.mobile" :alt="`${p.title} — mobile`" loading="lazy" /></div>
+              <div class="phone__body">
+                <span class="phone__btn phone__btn--action" aria-hidden="true"></span>
+                <span class="phone__btn phone__btn--vol-up" aria-hidden="true"></span>
+                <span class="phone__btn phone__btn--vol-down" aria-hidden="true"></span>
+                <span class="phone__btn phone__btn--power" aria-hidden="true"></span>
+                <div class="phone__screen">
+                  <div class="phone__status" aria-hidden="true">
+                    <span class="phone__time">9:41</span>
+                    <span class="phone__icons">
+                      <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" /><rect x="5" y="5.5" width="3" height="6.5" rx="1" /><rect x="10" y="3" width="3" height="9" rx="1" /><rect x="15" y="0" width="3" height="12" rx="1" /></svg>
+                      <svg viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.3 2.5l1.2-1.3A10.6 10.6 0 0 0 8 .4 10.6 10.6 0 0 0 .5 3.4l1.2 1.3A9 9 0 0 1 8 2.2Zm0 3.6c1.4 0 2.7.5 3.7 1.4l1.2-1.3A7.2 7.2 0 0 0 8 4a7.2 7.2 0 0 0-4.9 1.9l1.2 1.3c1-.9 2.3-1.4 3.7-1.4Zm0 3.5c.5 0 1 .2 1.3.5L8 11.6 6.7 9.8c.3-.3.8-.5 1.3-.5Z" /></svg>
+                      <svg viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".4" /><rect x="2" y="2" width="19" height="8" rx="2" /><rect x="24" y="4" width="1.6" height="4" rx=".8" opacity=".45" /></svg>
+                    </span>
+                  </div>
+                  <span class="phone__island" aria-hidden="true"></span>
+                  <img :src="p.mobile" :alt="`${p.title} — mobile`" loading="lazy" />
+                  <span class="phone__home" aria-hidden="true"></span>
+                </div>
+              </div>
             </div>
           </component>
 
@@ -141,13 +160,52 @@ onBeforeUnmount(() => {
 .browser__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: filter .6s; }
 .case__media:hover .browser__screen img { filter: saturate(1.08); }
 
+/* ── iPhone 15 mock-up — every size is relative to the phone width (cqw) ── */
 .phone {
-  position: absolute; right: -2%; bottom: -4%; width: 22%; min-width: 92px;
-  padding: 5px; background: #0d0d0d; border: 1px solid rgba(255,255,255,.14); border-radius: 22px;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,.95);
+  position: absolute; right: -2%; bottom: -4%; width: 22%; min-width: 96px;
+  container-type: inline-size;
 }
-.phone__screen { border-radius: 17px; overflow: hidden; aspect-ratio: 390 / 844; background: #000; }
-.phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phone__body {
+  position: relative;
+  padding: 3.4cqw;                                  /* bezel */
+  background: #111113;
+  border-radius: 16cqw;
+  box-shadow:
+    inset 0 0 0 0.7cqw #3b3b3f,                     /* aluminium edge */
+    inset 0 0 0 1.2cqw #18181a,
+    0 30px 60px -20px rgba(0, 0, 0, 0.95);
+}
+.phone__btn { position: absolute; width: 1.1cqw; background: #2c2c2f; border-radius: 1cqw; }
+.phone__btn--action   { left: -0.9cqw; top: 19%; height: 6%; }
+.phone__btn--vol-up   { left: -0.9cqw; top: 29%; height: 11%; }
+.phone__btn--vol-down { left: -0.9cqw; top: 42%; height: 11%; }
+.phone__btn--power    { right: -0.9cqw; top: 31%; height: 17%; }
+
+.phone__screen {
+  position: relative; overflow: hidden;
+  aspect-ratio: 393 / 852;                          /* iPhone 15 logical resolution */
+  border-radius: 12.6cqw;
+  background: #fff;
+  display: flex; flex-direction: column;
+}
+.phone__status {
+  flex: 0 0 auto; height: 13.5cqw;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2cqw 7.5cqw 0 9cqw;
+  background: #fff; color: #000;
+}
+.phone__time { font-family: -apple-system, 'SF Pro Text', 'General Sans', sans-serif; font-size: 4.4cqw; font-weight: 600; letter-spacing: -0.01em; }
+.phone__icons { display: inline-flex; align-items: center; gap: 1.4cqw; }
+.phone__icons svg { height: 3cqw; width: auto; fill: currentColor; }
+.phone__island {
+  position: absolute; top: 3cqw; left: 50%; transform: translateX(-50%);
+  width: 32cqw; height: 9.4cqw; border-radius: 99px; background: #000; z-index: 2;
+}
+.phone__screen img { flex: 1 1 auto; min-height: 0; width: 100%; object-fit: cover; object-position: top; }
+.phone__home {
+  position: absolute; left: 50%; bottom: 2cqw; transform: translateX(-50%);
+  width: 35cqw; height: 1.3cqw; border-radius: 99px; background: rgba(0, 0, 0, 0.82); z-index: 2;
+}
 
 .case__text { display: flex; flex-direction: column; gap: 22px; }
 .case__layer { color: var(--cyan); }
@@ -182,7 +240,7 @@ onBeforeUnmount(() => {
   .case__text { grid-column: 10 / span 3; padding-top: 8px; }
   .case.is-flip .case__media { grid-column: 5 / span 8; grid-row: 1; }
   .case.is-flip .case__text { grid-column: 1 / span 3; grid-row: 1; }
-  .case.is-flip .phone { right: auto; left: -7%; bottom: -10%; width: 17%; }
+  .case.is-flip .phone { right: auto; left: -7%; bottom: -10%; width: 19%; }
   .case.is-flip .case__head { text-align: right; }
 }
 

@@ -12,9 +12,21 @@
           <div class="about__sticky">
             <figure class="about__photo">
               <div class="about__photo-frame">
-                <img :src="portrait" alt="Mohamed Chêfick — La Nuit des Devs" loading="lazy" />
+                <img :src="portrait" alt="Mohamed Chêfick KOUDENOUKPO — La Nuit des Devs" loading="lazy" />
+                <span class="about__chip"><i aria-hidden="true"></i>{{ t('nav.available') }} — 2026</span>
               </div>
-              <figcaption class="label">{{ t('about.fig') }}</figcaption>
+              <span class="about__badge" aria-hidden="true">
+                <svg class="about__badge-ring" viewBox="0 0 120 120">
+                  <defs><path id="about-badge-circle" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" /></defs>
+                  <text><textPath href="#about-badge-circle" textLength="282">FRONT-END • FULL-STACK • NESTJS • FLUTTER •</textPath></text>
+                </svg>
+                <span class="about__badge-core f-display">MC</span>
+              </span>
+              <span class="about__vertical label" aria-hidden="true">Mohamed Chêfick KOUDENOUKPO — {{ t('about.f.roleV') }}</span>
+              <figcaption class="about__caption">
+                <span class="label">{{ t('about.fig') }}</span>
+                <span class="label">©2026</span>
+              </figcaption>
             </figure>
 
             <dl class="about__facts">
@@ -45,7 +57,7 @@
           </div>
 
           <div class="about__sign-row">
-            <p class="about__sign f-serif">— Mohamed Chêfick Koudenoukpo</p>
+            <p class="about__sign f-serif">— Mohamed Chêfick KOUDENOUKPO</p>
             <a v-magnetic href="#work" class="about__cta" @click.prevent="scrollToTarget('#work')">
               <span>{{ t('about.cta') }}</span><span class="about__cta-arrow">↓</span>
             </a>
@@ -71,14 +83,14 @@ import { t, locale } from '@/lib/i18n';
 import { projects } from '@/data/content';
 
 const stats = [
-  { value: 3, suffix: '', key: 'about.s1' },
-  { value: projects.length, suffix: '', key: 'about.s2' },
+  { value: 3, suffix: '+', key: 'about.s1' },
+  { value: projects.length, suffix: '+', key: 'about.s2' },
   { value: 6, suffix: '', key: 'about.s3' },
   { value: 3, suffix: '', key: 'about.s4' },
 ];
 
 const facts = [
-  { k: 'about.f.name', raw: 'Mohamed Chêfick Koudenoukpo' },
+  { k: 'about.f.name', raw: 'Mohamed Chêfick KOUDENOUKPO' },
   { k: 'about.f.role', v: 'about.f.roleV' },
   { k: 'about.f.focus', v: 'about.f.focusV' },
   { k: 'about.f.edu', v: 'about.f.eduV' },
@@ -111,11 +123,12 @@ onMounted(() => {
       return;
     }
 
-    // The portrait itself stays still; only the facts below it fade in
-    gsap.from(q('.about__fact'), {
-      y: 20, opacity: 0, duration: 0.9, stagger: 0.07, ease: 'expo.out',
-      scrollTrigger: { trigger: q('.about__facts')[0], start: 'top 90%' },
-    });
+    // Portrait: a single upward wipe when it enters — no zoom, no parallax afterwards
+    gsap.timeline({ scrollTrigger: { trigger: q('.about__photo')[0], start: 'top 82%' } })
+      .fromTo(q('.about__photo-frame'), { clipPath: 'inset(100% 0% 0% 0% round 24px)' }, { clipPath: 'inset(0% 0% 0% 0% round 24px)', duration: 1.4, ease: 'expo.inOut', clearProps: 'clipPath' })
+      .from(q('.about__vertical, .about__caption, .about__chip'), { opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.9)
+      .from(q('.about__badge'), { scale: 0, rotation: -90, duration: 1, ease: 'back.out(1.7)' }, 1)
+      .from(q('.about__fact'), { y: 20, opacity: 0, duration: 0.9, stagger: 0.07, ease: 'expo.out' }, 1);
 
     gsap.from(q('.about__now'), { y: 20, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: q('.about__now')[0], start: 'top 88%' } });
 
@@ -144,7 +157,7 @@ onBeforeUnmount(() => { ctx?.revert(); inkTween?.scrollTrigger?.kill(); inkTween
 </script>
 
 <style scoped>
-.about { background: var(--paper); color: var(--ink); padding: clamp(96px, 12vw, 180px) 0 clamp(88px, 11vw, 170px); }
+.about { overflow-x: clip; background: var(--paper); color: var(--ink); padding: clamp(96px, 12vw, 180px) 0 clamp(88px, 11vw, 170px); }
 .about__head { display: flex; justify-content: space-between; border-top: 1px solid var(--line-dark); padding-top: 14px; margin-bottom: clamp(36px, 5vw, 80px); }
 .about__mute { color: var(--mute-dark); }
 
@@ -160,10 +173,66 @@ onBeforeUnmount(() => { ctx?.revert(); inkTween?.scrollTrigger?.kill(); inkTween
 .about__stats { order: 6; }
 
 /* ── Portrait + facts ── */
-.about__photo { margin: 0; }
-.about__photo-frame { overflow: hidden; aspect-ratio: 4 / 5; background: var(--paper-2); }
-.about__photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transform: scale(1.16); transform-origin: 66% 76%; }
-.about__photo figcaption { margin-top: 10px; color: var(--mute-dark); }
+/* Portrait: whole photo, soft rounded corners */
+.about__photo { position: relative; margin: 0; }
+.about__photo-frame {
+  position: relative; overflow: hidden; background: var(--paper-2);
+  border-radius: 18px;
+  aspect-ratio: 4 / 5; max-height: 72svh;
+}
+.about__photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; transform: scale(1.16); transform-origin: 66% 76%; }
+
+.about__vertical { display: none; }
+
+.about__caption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; color: var(--mute-dark); }
+
+/* "Available" chip inside the photo */
+.about__chip {
+  position: absolute; left: 14px; bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 7px 12px 7px 10px; border-radius: 999px;
+}
+.about__chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 0 rgba(10, 255, 236, 0.6); animation: chip-ping 2.2s infinite; }
+@keyframes chip-ping { 0% { box-shadow: 0 0 0 0 rgba(10, 255, 236, 0.55); } 80%, 100% { box-shadow: 0 0 0 7px rgba(10, 255, 236, 0); } }
+
+/* Rotating round badge sitting on the photo's corner */
+.about__badge {
+  position: absolute; z-index: 2; top: -26px; right: 10px;
+  width: 96px; height: 96px; border-radius: 50%;
+  background: var(--cyan); color: var(--ink);
+  display: grid; place-items: center;
+  box-shadow: 0 0 0 6px var(--paper);
+  overflow: hidden; /* keeps the spinning ring inside the circle */
+}
+.about__badge-ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: badge-spin 18s linear infinite; }
+.about__badge-ring text { font-family: var(--f-mono); font-size: 9.6px; font-weight: 500; letter-spacing: 0.06em; fill: currentColor; }
+.about__badge-core {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--cyan);
+  display: grid; place-items: center; font-size: 15px; font-weight: 600; letter-spacing: -0.02em;
+}
+@keyframes badge-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .about__badge-ring, .about__chip i { animation: none; } }
+
+@media (min-width: 1024px) {
+  .about__photo { padding-right: 34px; }
+  .about__photo-frame {
+    border-radius: 24px;
+    aspect-ratio: 4 / 5; max-height: none;
+  }
+  .about__photo-frame img { object-position: 50% 22%; }
+  .about__vertical {
+    display: block; position: absolute; top: 0; right: 0;
+    writing-mode: vertical-rl;
+    color: var(--ink); white-space: nowrap; letter-spacing: 0.18em;
+  }
+  .about__caption { padding-right: 0; }
+  .about__badge { top: -32px; left: -28px; right: auto; width: 122px; height: 122px; }
+  .about__badge-core { width: 50px; height: 50px; font-size: 18px; }
+  .about__chip { left: 18px; bottom: 18px; }
+  .about__facts { margin-right: 34px; }  /* align with the photo, not the vertical label */
+}
 
 .about__facts { margin: 26px 0 0; border-top: 1px solid var(--ink); }
 .about__fact { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line-dark); align-items: baseline; }
@@ -178,7 +247,7 @@ onBeforeUnmount(() => { ctx?.revert(); inkTween?.scrollTrigger?.kill(); inkTween
 .about__dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--ink); animation: ring 2.4s var(--ease-out) infinite; }
 @keyframes ring { 0% { transform: scale(0.6); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
 
-.about__statement { font-size: clamp(30px, 3.7vw, 64px); line-height: 1.06; font-weight: 500; letter-spacing: -0.03em; }
+.about__statement { font-size: clamp(36px, 4.6vw, 80px); line-height: 1.02; max-width: 15ch; font-weight: 500; letter-spacing: -0.03em; }
 .about__w { display: inline-block; }
 
 .about__text { display: grid; gap: 22px; margin-top: clamp(40px, 5vw, 72px); font-size: clamp(17px, 1.3vw, 20px); line-height: 1.6; color: #2f2f2c; }

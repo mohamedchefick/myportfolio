@@ -12,16 +12,20 @@
       </h2>
 
       <ol class="xp__list">
-        <li v-for="(e, i) in experience" :key="i" class="row">
+        <li v-for="(e, i) in experience" :key="i" class="row" :class="{ 'is-current': e.current }">
           <span class="row__fill" aria-hidden="true"></span>
-          <span class="row__period f-mono">{{ tr(e.period) }}</span>
+          <span class="row__dot" aria-hidden="true"></span>
+          <span class="row__period f-mono">
+            {{ tr(e.period) }}
+            <span v-if="e.current" class="visually-hidden">— {{ t('xp.current') }}</span>
+          </span>
           <div class="row__main">
             <h3 class="row__role f-display">{{ tr(e.role) }}</h3>
             <p class="row__company">{{ tr(e.company) }}</p>
           </div>
           <p class="row__detail">{{ tr(e.detail) }}</p>
           <ul class="row__tags">
-            <li v-for="t in e.tags" :key="t">{{ t }}</li>
+            <li v-for="tag in e.tags" :key="tag">{{ tag }}</li>
           </ul>
         </li>
       </ol>
@@ -63,30 +67,70 @@ onBeforeUnmount(() => ctx?.revert());
 .xp__title { margin: clamp(28px, 4vw, 56px) 0 clamp(48px, 7vw, 100px); font-size: clamp(42px, 7.4vw, 128px); font-weight: 500; line-height: 0.95; letter-spacing: -0.045em; }
 .xp__title em { color: var(--cyan); font-size: 1.06em; }
 
-.xp__list { list-style: none; margin: 0; padding: 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.xp__list { list-style: none; margin: 0; padding: 0; position: relative; }
+
+/* ── Mobile / tablet: vertical timeline ── */
+.xp__list::before { content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+
 .row {
   --rule: 1;
   position: relative;
   display: grid; grid-template-columns: 1fr; gap: 10px;
-  padding: 28px 0 30px;
-  isolation: isolate;
+  padding: 0 0 40px 32px;
 }
-.row::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform: scaleX(var(--rule)); transform-origin: left; }
-.row:last-child { border-bottom: 1px solid var(--line); }
-.row__fill { position: absolute; inset: 0; background: var(--cyan); transform: scaleY(0); transform-origin: bottom; transition: transform .55s var(--ease-out); z-index: -1; }
-.row:hover .row__fill { transform: scaleY(1); }
-.row:hover, .row:hover .row__company, .row:hover .row__period, .row:hover .row__detail { color: var(--ink); }
-.row:hover .row__tags li { border-color: rgba(10,10,10,.3); color: var(--ink); }
+.row:last-child { padding-bottom: 0; }
+.row__fill { display: none; }
 
-.row__period { font-size: 12px; color: var(--cyan); transition: color .3s; }
-.row__role { font-size: clamp(28px, 3vw, 46px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.02; }
-.row__company { color: var(--mute); margin-top: 4px; transition: color .3s; }
-.row__detail { color: #bdbdb8; font-size: 16px; line-height: 1.55; max-width: 48ch; transition: color .3s; }
+.row__dot {
+  position: absolute; left: 0; top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--ink); border: 1px solid var(--mute);
+}
+.row.is-current .row__dot { background: var(--cyan); border-color: var(--cyan); }
+.row.is-current .row__dot::after {
+  content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 1px solid var(--cyan);
+  animation: xp-ping 2.4s var(--ease-out) infinite;
+}
+@keyframes xp-ping { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
+.row__period {
+  justify-self: start;
+  font-size: 11px; letter-spacing: 0.04em; color: var(--cyan);
+  border: 1px solid rgba(10, 255, 236, 0.35); padding: 3px 8px;
+}
+.row__role { font-size: clamp(26px, 7vw, 46px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; }
+.row__company { color: var(--mute); margin-top: 6px; font-size: 15px; }
+.row__detail { color: #bdbdb8; font-size: 16px; line-height: 1.55; max-width: 48ch; }
 .row__tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 4px 0 0; }
-.row__tags li { font-family: var(--f-mono); font-size: 11px; padding: 5px 9px; border: 1px solid var(--line); color: #cfcfca; transition: color .3s, border-color .3s; }
+.row__tags li { font-family: var(--f-mono); font-size: 11px; padding: 5px 9px; border: 1px solid var(--line); color: #cfcfca; }
 
+/* ── Desktop: full-width table rows ── */
 @media (min-width: 1024px) {
-  .row { grid-template-columns: 2fr 5fr 5fr 3fr; column-gap: 20px; align-items: start; padding: 34px 12px 38px; margin: 0 -12px; }
+  .xp__list::before { display: none; }
+  .row {
+    grid-template-columns: 2fr 5fr 5fr 3fr; column-gap: 20px; align-items: start;
+    padding: 34px 12px 38px; margin: 0 -12px;
+    isolation: isolate;
+  }
+  .row:last-child { padding-bottom: 38px; border-bottom: 1px solid var(--line); }
+  .row::after { content: ''; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; background: var(--line); transform: scaleX(var(--rule)); transform-origin: left; }
+  .row__dot { display: none; }
+  .row__period { border: 0; padding: 0; font-size: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .row.is-current .row__period::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+  .row__role { font-size: clamp(28px, 3vw, 46px); }
   .row__tags { justify-content: flex-end; margin: 0; }
+
+  .row__fill { display: block; position: absolute; inset: 0; background: var(--cyan); transform: scaleY(0); transform-origin: bottom; transition: transform .55s var(--ease-out); z-index: -1; }
+  .row__period, .row__company, .row__detail, .row__tags li { transition: color .3s, border-color .3s; }
+}
+
+/* Hover highlight only where a real pointer exists — never sticks on touch screens */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .row:hover .row__fill { transform: scaleY(1); }
+  .row:hover, .row:hover .row__company, .row:hover .row__period, .row:hover .row__detail { color: var(--ink); }
+  .row:hover.is-current .row__period::before { background: var(--ink); }
+  .row:hover .row__tags li { border-color: rgba(10, 10, 10, 0.3); color: var(--ink); }
 }
 </style>

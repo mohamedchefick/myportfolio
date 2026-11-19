@@ -60,12 +60,12 @@ const messages = {
   'about.label': { en: '(01) About', fr: '(01) À propos' },
   'about.sub': { en: 'Who’s behind the screen', fr: 'Qui est derrière l’écran' },
   'about.statement': {
-    en: 'I started as a front-end developer obsessed with pixels and motion. Today I build the whole product — the interface people touch, the API that feeds it and the mobile app in their pocket.',
-    fr: 'J’ai commencé comme développeur front-end obsédé par les pixels et le mouvement. Aujourd’hui je construis tout le produit — l’interface qu’on touche, l’API qui l’alimente et l’appli mobile dans la poche.',
+    en: 'Front-end developer at heart. Today, I build the whole product.',
+    fr: 'Développeur front-end à la base. Aujourd’hui, je construis tout le produit.',
   },
   'about.p1': {
-    en: 'Three years at <strong>41DEVS</strong> — from intern to full-stack developer — shipping for insurers, fintechs, health and institutions taught me one thing: the best interface is useless if the API behind it is slow, fragile or unclear.',
-    fr: 'Trois ans chez <strong>41DEVS</strong> — de stagiaire à développeur full-stack — à livrer pour des assureurs, des fintechs, la santé et des institutions m’ont appris une chose : la meilleure interface ne sert à rien si l’API derrière est lente, fragile ou floue.',
+    en: 'More than three years at <strong>41DEVS</strong> — from intern to full-stack developer — shipping for insurers, fintechs, health and institutions taught me one thing: the best interface is useless if the API behind it is slow, fragile or unclear.',
+    fr: 'Plus de trois ans chez <strong>41DEVS</strong> — de stagiaire à développeur full-stack — à livrer pour des assureurs, des fintechs, la santé et des institutions m’ont appris une chose : la meilleure interface ne sert à rien si l’API derrière est lente, fragile ou floue.',
   },
   'about.p2': {
     en: 'So I went down the stack. I now design data models and write <strong>NestJS</strong> services, then ship <strong>Flutter</strong> apps on top of them — while keeping the eye for detail that made me a front-end developer in the first place.',
@@ -124,10 +124,11 @@ const messages = {
 
   // experience
   'xp.label': { en: '(04) Experience', fr: '(04) Parcours' },
-  'xp.sub': { en: '3 years at 41DEVS', fr: '3 ans chez 41DEVS' },
+  'xp.sub': { en: '3+ years at 41DEVS', fr: '3 ans+ chez 41DEVS' },
   'xp.t1': { en: 'From pixels', fr: 'Des pixels' },
   'xp.t2a': { en: 'to', fr: 'à la' },
   'xp.t2b': { en: 'production', fr: 'production' },
+  'xp.current': { en: 'Current position', fr: 'Poste actuel' },
 
   // contact
   'ct.label': { en: '(05) Contact', fr: '(05) Contact' },

@@ -22,7 +22,7 @@
     </div>
 
     <div class="wrap ft__base">
-      <span class="label">© 2026 Koudenoukpo Mohamed Chêfick</span>
+      <span class="label">© 2026 KOUDENOUKPO Mohamed Chêfick</span>
       <span class="label ft__mute">{{ t('ft.built') }}</span>
     </div>
     </div>

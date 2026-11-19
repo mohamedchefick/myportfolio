@@ -266,7 +266,7 @@ export const capabilities = [
       en: 'Interfaces that feel fast and look exactly like the design. Component systems, motion, 3D and accessibility treated as features, not extras.',
       fr: 'Des interfaces rapides et fidèles à la maquette. Systèmes de composants, animation, 3D et accessibilité traités comme des fonctionnalités, pas des options.',
     },
-    items: ['Vue 3 · Nuxt', 'React · Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'GSAP · Three.js · TresJS', 'Pinia · TanStack Query', 'Vitest · Cypress'],
+    items: ['Vue 3 · Nuxt', 'React · Next.js', 'TypeScript', 'Tailwind CSS', 'GSAP · Three.js · TresJS', 'Pinia · TanStack Query', 'Vitest · Cypress'],
   },
   {
     key: 'back',
@@ -301,7 +301,8 @@ export const steps = [
 
 export const experience = [
   {
-    period: { en: 'Now', fr: 'Actuel' },
+    period: { en: '1 year · now', fr: '1 an · actuel' },
+    current: true,
     role: { en: 'Full‑stack Developer', fr: 'Développeur Full‑stack' },
     company: '41DEVS',
     detail: {
@@ -311,14 +312,14 @@ export const experience = [
     tags: ['NestJS', 'Flutter', 'Vue', 'React'],
   },
   {
-    period: { en: 'Then', fr: 'Ensuite' },
+    period: { en: '2 years', fr: '2 ans' },
     role: { en: 'Front‑end Developer', fr: 'Développeur Front‑end' },
     company: '41DEVS',
     detail: {
       en: 'Web apps for insurance, fintech, health and institutional clients. UI architecture, REST / Swagger integration, performance and pixel-perfect delivery.',
       fr: 'Applications web pour l’assurance, la fintech, la santé et des institutions. Architecture UI, intégration REST / Swagger, performance et rendu au pixel près.',
     },
-    tags: ['Vue', 'Angular', 'Next.js', 'TypeScript'],
+    tags: ['Vue', 'React', 'Next.js', 'TypeScript'],
   },
   {
     period: { en: '4 months', fr: '4 mois' },
@@ -351,9 +352,9 @@ export const experience = [
     tags: ['LLM', 'Voice AI'],
   },
   {
-    period: { en: 'Degree', fr: 'Diplôme' },
+    period: { en: '3 years', fr: '3 ans' },
     role: { en: 'Bachelor’s in Business Computing', fr: 'Licence en informatique de gestion' },
-    company: { en: 'Licence — Informatique de gestion', fr: 'Formation universitaire' },
+    company: { en: 'Licence — Informatique de gestion · 3 years of study', fr: 'Formation universitaire · 3 années d’études' },
     detail: {
       en: 'Programming, databases, information systems and management — the foundations behind every API and dashboard I build.',
       fr: 'Programmation, bases de données, systèmes d’information et gestion — les fondations de chaque API et tableau de bord que je construis.',
