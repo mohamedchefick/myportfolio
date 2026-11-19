@@ -9,6 +9,7 @@
     <AboutSection id="about" />
     <WorkShowreel id="work" />
     <WorkList />
+    <EarlyWork />
     <StackSection id="stack" />
     <ExperienceSection id="experience" />
     <ContactSection id="contact" />
@@ -31,6 +32,7 @@ import MarqueeBand from '@/components/MarqueeBand.vue';
 import AboutSection from '@/components/AboutSection.vue';
 import WorkShowreel from '@/components/WorkShowreel.vue';
 import WorkList from '@/components/WorkList.vue';
+import EarlyWork from '@/components/EarlyWork.vue';
 import StackSection from '@/components/StackSection.vue';
 import ExperienceSection from '@/components/ExperienceSection.vue';
 import ContactSection from '@/components/ContactSection.vue';

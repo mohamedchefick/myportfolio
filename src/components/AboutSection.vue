@@ -71,7 +71,7 @@ import { t, locale } from '@/lib/i18n';
 import { projects } from '@/data/content';
 
 const stats = [
-  { value: 4, suffix: '+', key: 'about.s1' },
+  { value: 3, suffix: '', key: 'about.s1' },
   { value: projects.length, suffix: '', key: 'about.s2' },
   { value: 6, suffix: '', key: 'about.s3' },
   { value: 3, suffix: '', key: 'about.s4' },

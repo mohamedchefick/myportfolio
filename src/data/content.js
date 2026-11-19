@@ -4,11 +4,6 @@ import shotEtchite from '@/assets/work/etchite.jpg';
 import shotEtchiteM from '@/assets/work/etchite-m.jpg';
 import shotOremi from '@/assets/work/oremi-mli.jpg';
 import shotOremiM from '@/assets/work/oremi-mli-m.jpg';
-import shotOremiBj from '@/assets/work/oremi-bj.jpg';
-import shotOremiCi from '@/assets/work/oremi-ci.jpg';
-import shotOremiCmr from '@/assets/work/oremi-cmr.jpg';
-import shotOremiMdg from '@/assets/work/oremi-mdg.jpg';
-import shotOremiCom from '@/assets/work/oremi-com.jpg';
 import shotAsa from '@/assets/work/asa.jpg';
 import shotVeep from '@/assets/work/veep.jpg';
 import shotVeepM from '@/assets/work/veep-m.jpg';
@@ -23,8 +18,6 @@ import shotMvmc from '@/assets/work/mvmc-admin.jpg';
 import shotCarex from '@/assets/work/carex.jpg';
 import shotKasua from '@/assets/work/kasua.jpg';
 import shotKinetiva from '@/assets/work/kinetiva.jpg';
-import shotBoutique from '@/assets/work/boutique.jpg';
-import shotFames from '@/assets/work/fames.jpg';
 
 export const EMAIL = 'mohamedchefickmhchefick@gmail.com';
 
@@ -88,12 +81,12 @@ export const projects = [
     image: shotOremi,
     mobile: shotOremiM,
     countries: [
-      { name: { en: 'Benin', fr: 'Bénin' }, code: 'BJ', url: 'https://oremi.afgassurances.bj', image: shotOremiBj },
-      { name: { en: 'Côte d’Ivoire', fr: 'Côte d’Ivoire' }, code: 'CI', url: 'https://oremi.ci.41devs.co', image: shotOremiCi },
-      { name: { en: 'Mali', fr: 'Mali' }, code: 'ML', url: 'https://oremi.mli.41devs.co', image: shotOremi },
-      { name: { en: 'Cameroon', fr: 'Cameroun' }, code: 'CM', url: 'https://oremi.cmr.41devs.co', image: shotOremiCmr },
-      { name: { en: 'Madagascar', fr: 'Madagascar' }, code: 'MG', url: 'https://oremi.mdg.41devs.co', image: shotOremiMdg },
-      { name: { en: 'Comoros', fr: 'Comores' }, code: 'KM', url: 'https://oremi.com.41devs.co', image: shotOremiCom },
+      { name: { en: 'Benin', fr: 'Bénin' }, code: 'BJ', url: 'https://oremi.afgassurances.bj' },
+      { name: { en: 'Côte d’Ivoire', fr: 'Côte d’Ivoire' }, code: 'CI', url: 'https://oremi.ci.41devs.co' },
+      { name: { en: 'Mali', fr: 'Mali' }, code: 'ML', url: 'https://oremi.mli.41devs.co' },
+      { name: { en: 'Cameroon', fr: 'Cameroun' }, code: 'CM', url: 'https://oremi.cmr.41devs.co' },
+      { name: { en: 'Madagascar', fr: 'Madagascar' }, code: 'MG', url: 'https://oremi.mdg.41devs.co' },
+      { name: { en: 'Comoros', fr: 'Comores' }, code: 'KM', url: 'https://oremi.com.41devs.co' },
     ],
   },
   {
@@ -241,8 +234,26 @@ export const projects = [
 ];
 
 export const archive = [
-  { title: 'LaboutiqueChine', kind: { en: 'E-commerce', fr: 'E-commerce' }, year: '2023', stack: 'Vue · Firebase', image: shotBoutique },
-  { title: 'FAMES Bénin', kind: { en: 'Association website', fr: 'Site associatif' }, year: '2023', stack: 'Vue · Tailwind', image: shotFames },
+  {
+    title: 'LaboutiqueChine',
+    kind: { en: 'E-commerce', fr: 'E-commerce' },
+    year: '2023',
+    summary: {
+      en: 'An online store for authentic Chinese products — clothing, tech, accessories and beauty — with a smooth, secure checkout.',
+      fr: 'Une boutique en ligne de produits chinois authentiques — vêtements, high-tech, accessoires et beauté — avec un parcours d’achat fluide et sécurisé.',
+    },
+    stack: ['Vue.js', 'Tailwind CSS', 'Firebase'],
+  },
+  {
+    title: 'FAMES Bénin',
+    kind: { en: 'Association website', fr: 'Site associatif' },
+    year: '2023',
+    summary: {
+      en: 'Official site of the Beninese Students Association in China: exchanges, mutual support, articles, practical advice and opportunities.',
+      fr: 'Site officiel de l’association des étudiants béninois en Chine : échanges, entraide, articles, conseils pratiques et opportunités.',
+    },
+    stack: ['Vue.js', 'Tailwind CSS'],
+  },
 ];
 
 export const capabilities = [
@@ -291,7 +302,7 @@ export const steps = [
 export const experience = [
   {
     period: { en: 'Now', fr: 'Actuel' },
-    role: { en: 'Full-stack Developer', fr: 'Développeur Full-stack' },
+    role: { en: 'Full‑stack Developer', fr: 'Développeur Full‑stack' },
     company: '41DEVS',
     detail: {
       en: 'NestJS APIs, Flutter apps and the web front-ends on top of them — from data model to store release.',
@@ -300,14 +311,34 @@ export const experience = [
     tags: ['NestJS', 'Flutter', 'Vue', 'React'],
   },
   {
-    period: { en: '2 years', fr: '2 ans' },
-    role: { en: 'Front-end Developer', fr: 'Développeur Front-end' },
+    period: { en: 'Then', fr: 'Ensuite' },
+    role: { en: 'Front‑end Developer', fr: 'Développeur Front‑end' },
     company: '41DEVS',
     detail: {
-      en: 'Scalable web apps for insurance, fintech, health and institutional clients. UI architecture, REST / Swagger integration, performance and pixel-perfect delivery.',
+      en: 'Web apps for insurance, fintech, health and institutional clients. UI architecture, REST / Swagger integration, performance and pixel-perfect delivery.',
       fr: 'Applications web pour l’assurance, la fintech, la santé et des institutions. Architecture UI, intégration REST / Swagger, performance et rendu au pixel près.',
     },
     tags: ['Vue', 'Angular', 'Next.js', 'TypeScript'],
+  },
+  {
+    period: { en: '4 months', fr: '4 mois' },
+    role: { en: 'Professional internship', fr: 'Stage professionnel' },
+    company: '41DEVS',
+    detail: {
+      en: 'First production work on client projects inside the team, from Figma mock-ups to integrated, API-connected screens.',
+      fr: 'Premiers travaux en production sur des projets clients au sein de l’équipe, des maquettes Figma aux écrans intégrés et connectés à l’API.',
+    },
+    tags: ['Vue', 'Tailwind', 'REST'],
+  },
+  {
+    period: { en: '4 months', fr: '4 mois' },
+    role: { en: 'Academic internship', fr: 'Stage académique' },
+    company: '41DEVS',
+    detail: {
+      en: 'Where it started: responsive interfaces, team workflow and the habits of shipping real products.',
+      fr: 'Là où tout a commencé : interfaces responsives, travail en équipe et habitudes de livraison de vrais produits.',
+    },
+    tags: ['HTML / CSS', 'JavaScript', 'Vue'],
   },
   {
     period: { en: 'Ongoing', fr: 'En cours' },
@@ -320,23 +351,13 @@ export const experience = [
     tags: ['LLM', 'Voice AI'],
   },
   {
-    period: { en: '4 months', fr: '4 mois' },
-    role: { en: 'Front-end Intern', fr: 'Stagiaire Front-end' },
-    company: 'HELIS',
+    period: { en: 'Degree', fr: 'Diplôme' },
+    role: { en: 'Bachelor’s in Business Computing', fr: 'Licence en informatique de gestion' },
+    company: { en: 'Licence — Informatique de gestion', fr: 'Formation universitaire' },
     detail: {
-      en: 'Responsive interfaces with Vue, Tailwind and Firebase across several client projects.',
-      fr: 'Interfaces responsives avec Vue, Tailwind et Firebase sur plusieurs projets clients.',
+      en: 'Programming, databases, information systems and management — the foundations behind every API and dashboard I build.',
+      fr: 'Programmation, bases de données, systèmes d’information et gestion — les fondations de chaque API et tableau de bord que je construis.',
     },
-    tags: ['Vue', 'Firebase'],
-  },
-  {
-    period: { en: '3 years', fr: '3 ans' },
-    role: { en: 'Bac+3 — Web Development', fr: 'Bac+3 — Développement web' },
-    company: { en: 'Academic training', fr: 'Formation' },
-    detail: {
-      en: 'Foundations in programming, web engineering and software architecture.',
-      fr: 'Bases solides en programmation, ingénierie web et architecture logicielle.',
-    },
-    tags: ['Engineering'],
+    tags: ['Programming', 'Databases', 'IS'],
   },
 ];

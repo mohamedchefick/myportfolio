@@ -64,8 +64,8 @@ const messages = {
     fr: 'J’ai commencé comme développeur front-end obsédé par les pixels et le mouvement. Aujourd’hui je construis tout le produit — l’interface qu’on touche, l’API qui l’alimente et l’appli mobile dans la poche.',
   },
   'about.p1': {
-    en: 'Two years shipping front-ends at <strong>41DEVS</strong> for insurers, fintechs, health and institutions taught me one thing: the best interface is useless if the API behind it is slow, fragile or unclear.',
-    fr: 'Deux ans à livrer des front-ends chez <strong>41DEVS</strong> pour des assureurs, des fintechs, la santé et des institutions m’ont appris une chose : la meilleure interface ne sert à rien si l’API derrière est lente, fragile ou floue.',
+    en: 'Three years at <strong>41DEVS</strong> — from intern to full-stack developer — shipping for insurers, fintechs, health and institutions taught me one thing: the best interface is useless if the API behind it is slow, fragile or unclear.',
+    fr: 'Trois ans chez <strong>41DEVS</strong> — de stagiaire à développeur full-stack — à livrer pour des assureurs, des fintechs, la santé et des institutions m’ont appris une chose : la meilleure interface ne sert à rien si l’API derrière est lente, fragile ou floue.',
   },
   'about.p2': {
     en: 'So I went down the stack. I now design data models and write <strong>NestJS</strong> services, then ship <strong>Flutter</strong> apps on top of them — while keeping the eye for detail that made me a front-end developer in the first place.',
@@ -80,10 +80,10 @@ const messages = {
   'about.f.focus': { en: 'Focus', fr: 'Spécialité' },
   'about.f.focusV': { en: 'Interfaces · APIs · Mobile', fr: 'Interfaces · API · Mobile' },
   'about.f.edu': { en: 'Education', fr: 'Formation' },
-  'about.f.eduV': { en: 'Bac+3 — Web development', fr: 'Bac+3 — Développement web' },
+  'about.f.eduV': { en: 'Bachelor’s — Business Computing', fr: 'Licence — Informatique de gestion' },
   'about.s4': { en: 'Layers: UI · API · Mobile', fr: 'Couches : UI · API · Mobile' },
   'about.cta': { en: 'See the work', fr: 'Voir les projets' },
-  'about.s1': { en: 'Years building', fr: 'Années de dev' },
+  'about.s1': { en: 'Years at 41DEVS', fr: 'Ans chez 41DEVS' },
   'about.s2': { en: 'Products shipped', fr: 'Produits livrés' },
   'about.s3': { en: 'Countries live', fr: 'Pays en production' },
 
@@ -105,6 +105,13 @@ const messages = {
   'work.private': { en: 'Private product — demo on request', fr: 'Produit privé — démo sur demande' },
   'work.countries': { en: 'Live in 6 countries', fr: 'En ligne dans 6 pays' },
   'work.earlier': { en: 'Earlier work', fr: 'Premiers projets' },
+  'early.t1': { en: 'Where it', fr: 'Là où tout' },
+  'early.t2': { en: 'all started.', fr: 'a commencé.' },
+  'early.lead': {
+    en: 'My first shipped websites — small teams, real users, and the start of an obsession with clean interfaces.',
+    fr: 'Mes premiers sites livrés — petites équipes, vrais utilisateurs, et le début d’une obsession pour les interfaces soignées.',
+  },
+  'early.archived': { en: 'Archived', fr: 'Archivé' },
   'work.also': { en: 'Also shipped', fr: 'Aussi livré' },
 
   // stack
@@ -117,7 +124,7 @@ const messages = {
 
   // experience
   'xp.label': { en: '(04) Experience', fr: '(04) Parcours' },
-  'xp.sub': { en: 'Path so far', fr: 'Le chemin parcouru' },
+  'xp.sub': { en: '3 years at 41DEVS', fr: '3 ans chez 41DEVS' },
   'xp.t1': { en: 'From pixels', fr: 'Des pixels' },
   'xp.t2a': { en: 'to', fr: 'à la' },
   'xp.t2b': { en: 'production', fr: 'production' },

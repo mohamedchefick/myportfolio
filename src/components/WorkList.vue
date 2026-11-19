@@ -26,10 +26,10 @@
             <div class="browser">
               <div class="browser__bar">
                 <i></i><i></i><i></i>
-                <span class="browser__url f-mono">{{ screenFor(p).domain }}</span>
+                <span class="browser__url f-mono">{{ p.url ? (p.countries ? 'oremi.mli.41devs.co' : tr(p.domain)) : 'private' }}</span>
               </div>
               <div class="browser__screen">
-                <img :src="screenFor(p).image" :alt="`${p.title} — screenshot`" loading="lazy" />
+                <img :src="p.image" :alt="`${p.title} — screenshot`" loading="lazy" />
               </div>
             </div>
             <div v-if="p.mobile" class="phone">
@@ -44,8 +44,7 @@
               <p class="label countries__label">{{ t('work.countries') }}</p>
               <ul>
                 <li v-for="c in p.countries" :key="c.code">
-                  <a :href="c.url" target="_blank" rel="noopener" class="country" :class="{ on: hover[p.id] === c.code }"
-                    @pointerenter="hover[p.id] = c.code" @focus="hover[p.id] = c.code">
+                  <a :href="c.url" target="_blank" rel="noopener" class="country">
                     <span class="country__code f-mono">{{ c.code }}</span>
                     <span class="country__name">{{ tr(c.name) }}</span>
                     <span class="country__arrow">↗</span>
@@ -68,66 +67,25 @@
         </div>
       </article>
 
-      <!-- Archive -->
-      <div class="archive">
-        <div class="archive__head">
-          <span class="label">{{ t('work.earlier') }}</span>
-          <span class="label archive__mute">2023</span>
-        </div>
-        <ul>
-          <li v-for="a in archive" :key="a.title" class="archive__row" @pointerenter="showPreview(a)" @pointerleave="hidePreview">
-            <span class="archive__title f-display">{{ a.title }}</span>
-            <span class="archive__kind">{{ tr(a.kind) }}</span>
-            <span class="archive__stack f-mono">{{ a.stack }}</span>
-            <span class="archive__year f-mono">{{ a.year }}</span>
-          </li>
-        </ul>
-      </div>
     </div>
 
-    <div ref="preview" class="preview" aria-hidden="true"><img v-if="previewSrc" :src="previewSrc" alt="" /></div>
   </section>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
-import { projects, archive } from '@/data/content';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { projects } from '@/data/content';
 import { t, tr } from '@/lib/i18n';
 
-// Oremi: which country version is shown in the browser mock-up
-const hover = reactive({});
-function screenFor(p) {
-  const c = p.countries?.find((x) => x.code === hover[p.id]);
-  if (c) return { image: c.image, domain: new URL(c.url).host };
-  return { image: p.image, domain: p.url ? (p.countries ? new URL(p.countries[2].url).host : tr(p.domain)) : 'private' };
-}
-import { gsap, isTouch, prefersReducedMotion } from '@/lib/motion';
+import { gsap, prefersReducedMotion } from '@/lib/motion';
 
 const root = ref(null);
-const preview = ref(null);
-const previewSrc = ref('');
-let ctx, px, py;
+let ctx;
 
-function showPreview(a) {
-  if (isTouch) return;
-  previewSrc.value = a.image;
-  gsap.to(preview.value, { scale: 1, opacity: 1, duration: 0.5, ease: 'expo.out' });
-}
-function hidePreview() {
-  if (isTouch) return;
-  gsap.to(preview.value, { scale: 0.6, opacity: 0, duration: 0.35, ease: 'power3.in' });
-}
-function movePreview(e) { px?.(e.clientX); py?.(e.clientY); }
 
 onMounted(() => {
   const q = gsap.utils.selector(root.value);
 
-  if (!isTouch) {
-    gsap.set(preview.value, { scale: 0.6, opacity: 0, xPercent: -50, yPercent: -50 });
-    px = gsap.quickTo(preview.value, 'x', { duration: 0.6, ease: 'power3' });
-    py = gsap.quickTo(preview.value, 'y', { duration: 0.6, ease: 'power3' });
-    window.addEventListener('pointermove', movePreview);
-  }
 
   ctx = gsap.context(() => {
     if (prefersReducedMotion) return;
@@ -148,13 +106,11 @@ onMounted(() => {
       if (phone.length) tl.from(phone, { y: 40, opacity: 0, duration: 1.4 }, 0.5);
     });
 
-    gsap.from(q('.archive__row'), { y: 30, opacity: 0, duration: 1, stagger: 0.08, ease: 'expo.out', scrollTrigger: { trigger: q('.archive')[0], start: 'top 85%' } });
   }, root.value);
 });
 
 onBeforeUnmount(() => {
   ctx?.revert();
-  window.removeEventListener('pointermove', movePreview);
 });
 </script>
 
@@ -212,8 +168,8 @@ onBeforeUnmount(() => {
 .country { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 500; transition: color .3s, padding .5s var(--ease-out); }
 .country__code { font-size: 10px; color: var(--mute); width: 20px; }
 .country__arrow { margin-left: auto; color: var(--cyan); opacity: 0; transform: translate(-4px, 4px); transition: opacity .3s, transform .5s var(--ease-out); }
-.country:hover, .country.on { color: var(--cyan); padding-left: 6px; }
-.country:hover .country__arrow, .country.on .country__arrow { opacity: 1; transform: none; }
+.country:hover { color: var(--cyan); }
+.country:hover .country__arrow { opacity: 1; transform: none; }
 @media (min-width: 1024px) { .countries ul { grid-template-columns: 1fr; } }
 
 @media (min-width: 1024px) {
@@ -230,25 +186,5 @@ onBeforeUnmount(() => {
   .case.is-flip .case__head { text-align: right; }
 }
 
-/* ── Archive ── */
-.archive { margin-top: clamp(80px, 10vw, 160px); }
-.archive__head { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-.archive__head .label { color: var(--mute); }
-.archive ul { list-style: none; margin: 0; padding: 0; }
-.archive__row { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 22px 0; border-bottom: 1px solid var(--line); transition: padding .5s var(--ease-out), color .3s; }
-.archive__row:hover { padding-left: 14px; color: var(--cyan); }
-.archive__title { font-size: clamp(26px, 3.4vw, 52px); font-weight: 500; letter-spacing: -0.03em; line-height: 1; }
-.archive__kind { color: var(--mute); grid-column: 1; font-size: 14px; }
-.archive__stack { display: none; }
-.archive__year { grid-column: 2; grid-row: 1; color: var(--mute); font-size: 12px; align-self: center; }
-@media (min-width: 768px) {
-  .archive__row { grid-template-columns: 5fr 3fr 3fr 1fr; align-items: center; }
-  .archive__kind, .archive__stack { grid-column: auto; display: block; }
-  .archive__stack { font-size: 12px; color: var(--mute); }
-  .archive__year { grid-column: auto; grid-row: auto; justify-self: end; }
-}
 
-.preview { position: fixed; left: 0; top: 0; z-index: 60; width: 340px; aspect-ratio: 4/3; pointer-events: none; overflow: hidden; background: var(--ink-3); }
-.preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-@media (hover: none) { .preview { display: none; } }
 </style>
